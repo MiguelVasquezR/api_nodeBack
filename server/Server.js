@@ -7,6 +7,7 @@ const path = require('path');
 
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'ImagesBaseDatos')));
+app.use(express.static(path.join(__dirname, 'ImagesAutorBD')));
 
 app.use(connection(mysql, {
     host: 'localhost',
