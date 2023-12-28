@@ -43,14 +43,14 @@ router.post("/image/post", fileUpload, (req, res) => {
 router.get("/image/get/:ID", (req, res) => {        
     req.getConnection((err, cont) => {
         if (err) return res.status(500).send("Error en el servidor al guardar la imagen");        
-        const id = req.params.ID;              
+        const id = req.params.ID;                      
         cont.query(`SELECT * FROM IMAGENPERFIL WHERE ID IN (SELECT FOTO FROM Lista WHERE IDUsuario = ?);`, [id] ,(err, rows) => {
             if (err) { console.log("Error"); return res.status(500).send("Error en el servidor al guardar la imagen en la bd"); }            
-
             rows.map((img) => {
                 fs.writeFileSync(path.join(__dirname, '../ImagesBaseDatos/' + img.ID + ".png"), img.IMAGEN);
             });
             const nameImg = fs.readdirSync(path.join(__dirname, "../ImagesBaseDatos/"));                                
+            console.log(nameImg);
             res.send(nameImg);
         })
     })
