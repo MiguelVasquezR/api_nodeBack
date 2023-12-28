@@ -10,17 +10,17 @@ app.use(express.static(path.join(__dirname, 'ImagesBaseDatos')));
 app.use(express.static(path.join(__dirname, 'ImagesAutorBD')));
 
 app.use(connection(mysql, {
-    host: 'localhost',
+    host: 'resenas.mysql.database.azure.com',
     port: 3306, 
-    user: 'root',
-    password: 'FormulaUno',
-    database: 'RESENAS'
+    user: 'daniel@resenas',
+    password: 'pepito*89',
+    database: 'resenas'
 }));
 
 app.use(require("./routes/Routes.js"));
 
 app.listen(9000, () => {
-    console.log("Server Corriendo en", "http://localhost:"+9000);
+    console.log("Server Corriendo en", 9000);
 })
 
 
