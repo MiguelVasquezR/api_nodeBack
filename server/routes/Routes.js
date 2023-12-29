@@ -38,7 +38,7 @@ router.post("/image/post", fileUpload, (req, res) => {
                 }            
                 res.send(JSON.stringify(respuesta));
             })
-        })
+        });
     }catch(err){
         console.log("Error en image post");
     }    
